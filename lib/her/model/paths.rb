@@ -108,7 +108,7 @@ module Her
             key = $1.to_sym
             value = parameters.delete(key) || parameters.delete(:"_#{key}")
             if value
-              Faraday::Utils.escape value
+              value
             else
               raise(Her::Errors::PathError.new("Missing :_#{$1} parameter to build the request path. Path is `#{path}`. Parameters are `#{parameters.symbolize_keys.inspect}`.", $1))
             end
